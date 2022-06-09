@@ -1,0 +1,76 @@
+<%- include("partials/header1") -%>
+<div class="make">
+  <h1 style="text-align: center; font-weight: 800; color: white;">Welcome <%= user %>! </h1>
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+
+  <div class="row adjust">
+    <div class="col-lg-6 space">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" style="text-align: center;">Tasks</h4>
+          <p class="card-text">
+
+            <div class="box fix">
+
+              <form class="item" action="/list" method="post">
+                <input type="text" class="transform" name="newItem" placeholder="Add Item to see in the list" autocomplete="off" required>
+                <button type="submit" class="round" name="list" value="<%= listTitle %>">+</button>
+              </form>
+          
+              <div class="over">
+              
+              <%  newListItems.forEach(function(item1){%>
+                <form action="/complete" method="post">
+                <div class="item">
+                  <input type="checkbox" name="checkbox" value="<%= item1._id%>" onChange="this.form.submit()">
+                  <p><%=  item1.name  %></p>
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>">
+                </form>
+              <%})%>
+          
+            </div>
+          </div>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 space">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" style="text-align: center;">Tasks accomplished</h4>
+          <p class="card-text">
+
+
+            <div class="box fix">
+              <div class="over1">
+                <div class="reverse">
+              
+                <%  completeItems.forEach(function(item1){%>
+                  <form action="/delete" method="post">
+                  <div class="item">
+                    
+                    <input type="hidden" name="listName" value="<%= listTitle %>">
+                    <button type="submit" class="btn btn-danger"
+                    style="position:relative; left: 250px;" value="<%= item1._id %>" name="checkbox">Delete</button>
+                    <p><%=  item1.name  %></p>
+                    
+                  </form>
+                </div>
+                <%})%>
+                </div>
+            </div>
+          </div>
+
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") -%>

@@ -1,0 +1,34 @@
+<%- include("partials/header1"); -%>
+<div class="make">
+    <h1>My Lists</h1>
+    
+    <div class="space reverse">
+        <%  array.forEach(function(list){ %>
+
+        <div class="card">
+            <div class="card-body">
+              <form action="/del" method="post">
+                <h2 class="card-title"><%= list.listname %></h2>
+                <a href="/list/<%=list.listname%>" class="btn btn-warning" style="position:absolute; right: 125px; top: 20px;">Visit</a>
+                  
+                  <button type="submit" class="btn btn-danger" style="position:absolute; right: 40px; top: 20px;" name="perm" value="<%= list.listname %>">Delete</button>
+                
+              </form>
+
+
+            </div>
+            
+          </div>  
+            <% }) %>
+
+    </div>
+    <br>
+    <div style="background-color:white; padding: 20px; font-size: large;">
+    <form action="/mylist" method="post">
+    <label><strong>Enter the name of the List to be created :</strong>
+      <input type="text" name="listname" style="border-radius: 5px;">
+      <input type="submit" class="btn btn-warning">
+    </form>
+    </div>
+</div>
+<%- include("partials/footer"); -%>
