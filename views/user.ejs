@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <div class="jumbotron centered">
+      <i class="fa-solid fa-circle-exclamation fa-6x"></i><br>
+    <!-- <h1 class="display-3" >Secrets</h1> -->
+    <p class="secret-text">Username already taken!</p>
+
+    <form action="/user" method="POST">
+
+      <div class="form-group">
+      </div>
+      <button type="submit" class="btn btn-danger btn-lg" >Register again</button>
+    </form>
+
+  </div>
+</div>
+<%- include('partials/footer') %>
