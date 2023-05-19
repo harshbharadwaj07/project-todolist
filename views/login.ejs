@@ -1,7 +1,17 @@
 <%- include('partials/header') %>
 
 <div class="container position">
-  <h1>Login</h1>
+  <%if(typeof error == "undefined"){%>
+    <h1>Login</h1>
+    <% } else { %>
+    <div style="color: red;">
+    <h1>Login again</h1>
+    <i class="fa-solid fa-circle-exclamation fa-lg" style="color: #ff2600;"></i>
+      <%= error%>
+    </div>
+  <%}%>
+
+  <br>
 
   <div class="row">
     <div class="col-sm-8">
