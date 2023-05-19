@@ -178,7 +178,8 @@ app.get("/list", ensureAuthenticated, function(req, res) {
 // main app
 
 app.get("/gstart",function(req,res){
-  res.render("gstart");
+  const loggedIn=req.isAuthenticated();
+  res.render("gstart",{loggedIn:loggedIn});
 });
 app.get("/mylist",ensureAuthenticated,function(req,res){
   const loggedIn = req.isAuthenticated();
